@@ -11,17 +11,23 @@ function App() {
             <div>
                 <LinkedLogo
                     linkUrl="https://vitejs.dev"
-                    imageSrc={viteLogo}
-                    imageAlt="Vite logo"
+                    image={{
+                        src: viteLogo,
+                        alt: "Vite logo"
+                    }}
                 />
                 <LinkedLogo
                     linkUrl="https://react.dev"
-                    imageSrc={reactLogo}
-                    imageAlt="React logo"
+                    image={{
+                        src: reactLogo,
+                        alt: "React logo"
+                    }}
                 />
                 <MessageWithChildren name="Amit">
                     <p> Welcome to the app!</p>
                 </MessageWithChildren>
+            </div>
+            <div>
                 <p className="read-the-docs">
                     Click on the Vite and React logos to learn more
                 </p>

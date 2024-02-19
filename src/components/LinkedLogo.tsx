@@ -2,16 +2,19 @@ import {type ReactElement} from "react";
 
 interface LinkedLogoProps {
     linkUrl: string;
-    imageSrc: string;
-    imageAlt: string;
+    image: {
+        src: string;
+        alt: string;
+    }
 }
 
 export function LinkedLogo(
-    {linkUrl, imageSrc, imageAlt = ""}: LinkedLogoProps
+    {linkUrl, image}: LinkedLogoProps
 ): ReactElement {
     return (
         <a href={linkUrl} target="_blank">
-            <img src={imageSrc} className="logo" alt={imageAlt}/>
+            {/*<img className="logo" {...image} />*/}
+            <img src={image.src} alt={image.alt} className="logo"/>
         </a>
     );
 }
