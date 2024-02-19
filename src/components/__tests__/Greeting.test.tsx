@@ -24,20 +24,24 @@ it('loads and displays greeting', async () => {
 
     fireEvent.click(screen.getByText('Load Greeting'))
 
-    await screen.findByRole('heading')
+    const waitForHeadingToBeRendered = screen.findByRole('heading', {level: 2})
+    expect(screen.getByRole('button')).toBeDisabled()
+    await waitForHeadingToBeRendered
 
     expect(screen.getByRole('heading')).toHaveTextContent("Hello there!")
-    expect(screen.getByRole('button')).toBeDisabled()
+    expect(screen.getByRole('button')).toBeEnabled()
 })
 
-it('handles server error', async () => {
-
+it('handles server error, displays alert and enables button', async () => {
     render(<Greeting url="/greetings/2"/>)
 
     fireEvent.click(screen.getByText('Load Greeting'))
 
-    await screen.findByRole('alert')
+    const waitForAlertToBeRendered = screen.findByRole('alert')
+    expect(screen.getByRole('button')).toBeDisabled()
+    await waitForAlertToBeRendered
 
     expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!')
-    expect(screen.getByRole('button')).not.toBeDisabled()
+    expect(screen.queryByRole('heading', {level: 2})).not.toBeInTheDocument()
+    expect(screen.getByRole('button')).toBeEnabled()
 })

@@ -69,8 +69,10 @@ export default function Greeting({url}: FetchProps) {
                 dispatch({type: 'SUCCESS', greeting: greeting})
             })
             .catch((error?: never) => {
-                setButtonClicked(false);
                 dispatch({type: 'ERROR', error: error})
+            })
+            .finally(() => {
+                setButtonClicked(false);
             })
     }
 
@@ -81,7 +83,7 @@ export default function Greeting({url}: FetchProps) {
             <button onClick={() => fetchGreeting(url)} disabled={buttonClicked}>
                 {buttonText}
             </button>
-            {greeting && <h1>{greeting}</h1>}
+            {greeting && <h2>{greeting}</h2>}
             {isError && <p role="alert">Oops, failed to fetch!</p>}
         </div>
     )
