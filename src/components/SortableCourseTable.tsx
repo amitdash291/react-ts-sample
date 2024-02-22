@@ -4,7 +4,7 @@ import {CourseTable} from "./CourseTable.tsx";
 import {Box} from "@mui/material";
 import {RxTriangleDown, RxTriangleUp} from "react-icons/rx";
 
-interface SortableTableProps {
+interface SortableCourseTableProps {
     courses: Array<Course>
     getSortValue: (data: TableData) => string
 }
@@ -15,7 +15,7 @@ enum SortOrder {
     DESC
 }
 
-export function SortableCourseTable({courses, getSortValue}: SortableTableProps) {
+export function SortableCourseTable({courses, getSortValue}: SortableCourseTableProps) {
     const [sortOrder, setSortOrder] =
         useState<SortOrder>(SortOrder.NONE);
 

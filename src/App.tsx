@@ -6,6 +6,7 @@ import {LinkedLogo} from "./components/LinkedLogo.tsx";
 // import {CourseTable} from "./components/CourseTable.tsx";
 import {SortableCourseTable} from "./components/SortableCourseTable.tsx";
 import {coursesMockData} from "./mocks/courses.ts";
+import {Course} from "./models/course.ts";
 
 function App() {
     return (
@@ -31,7 +32,10 @@ function App() {
             </div>
             <div>
                 {/*<CourseTable courses={coursesMockData}/>*/}
-                <SortableCourseTable courses={coursesMockData} getSortValue={(course) => course.name}/>
+                <SortableCourseTable
+                    courses={coursesMockData}
+                    getSortValue={(course) => (course as Course).name}
+                />
             </div>
         </div>
     )
