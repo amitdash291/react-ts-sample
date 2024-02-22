@@ -3,12 +3,14 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import MessageWithChildren from "./components/MessageWithChildren.tsx";
 import {LinkedLogo} from "./components/LinkedLogo.tsx";
+// import {CourseTable} from "./components/CourseTable.tsx";
+import {SortableCourseTable} from "./components/SortableCourseTable.tsx";
+import {coursesMockData} from "./mocks/courses.ts";
 
 function App() {
-
     return (
-        <>
-            <div>
+        <div style={{flex: 1}}>
+            <div style={{flex: 1}}>
                 <LinkedLogo
                     linkUrl="https://vitejs.dev"
                     image={{
@@ -23,16 +25,15 @@ function App() {
                         alt: "React logo"
                     }}
                 />
-                <MessageWithChildren name="Amit">
+                <MessageWithChildren name="John Doe">
                     <p> Welcome to the app!</p>
                 </MessageWithChildren>
             </div>
             <div>
-                <p className="read-the-docs">
-                    Click on the Vite and React logos to learn more
-                </p>
+                {/*<CourseTable courses={coursesMockData}/>*/}
+                <SortableCourseTable courses={coursesMockData} getSortValue={(course) => course.name}/>
             </div>
-        </>
+        </div>
     )
 }
 
